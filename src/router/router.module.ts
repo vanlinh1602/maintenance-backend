@@ -1,11 +1,10 @@
 import { DynamicModule, ForwardReference, Module, Type } from '@nestjs/common';
 import { RouterModule as NestJsRouterModule } from '@nestjs/core';
 
+import { RouterCatalogModule } from './routes/routers.catalog.module';
 import { RouterDeviceModule } from './routes/routers.devices.module';
 import { RouterRequestModule } from './routes/routers.requests.module';
-import { RouterRoleModule } from './routes/routers.roles.module';
-import { RouterRoomModule } from './routes/routers.rooms.module';
-import { RouterStaffModule } from './routes/routers.staffs.module';
+import { RouterUserModule } from './routes/routers.user.module';
 
 @Module({})
 export class RouterModule {
@@ -21,9 +20,8 @@ export class RouterModule {
     imports.push(
       RouterDeviceModule,
       RouterRequestModule,
-      RouterRoleModule,
-      RouterRoomModule,
-      RouterStaffModule,
+      RouterCatalogModule,
+      RouterUserModule,
     );
     const routes = [
       {
@@ -35,16 +33,12 @@ export class RouterModule {
         module: RouterRequestModule,
       },
       {
-        path: '/roles',
-        module: RouterRoleModule,
+        path: '/catalog',
+        module: RouterCatalogModule,
       },
       {
-        path: '/rooms',
-        module: RouterRoomModule,
-      },
-      {
-        path: '/staffs',
-        module: RouterStaffModule,
+        path: '/user',
+        module: RouterUserModule,
       },
     ];
 

@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 
-import { Request } from './database/requests.entity';
+import { Request } from '../../database/models/requests.entity';
 import { RequestService } from './services/requests.service';
 
 @Module({

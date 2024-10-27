@@ -1,6 +1,6 @@
 import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { IDevice } from 'src/database/types/device';
 
-import { IDevice } from '../interfaces/devices.service.interface';
 import { DeviceService } from '../services/devices.service';
 
 @Controller()

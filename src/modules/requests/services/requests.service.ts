@@ -1,10 +1,8 @@
 import { Inject, Injectable } from '@nestjs/common';
+import { IRequest } from 'src/database/types/request';
 
-import { Request } from '../database/requests.entity';
-import {
-  IRequest,
-  IRequestService,
-} from '../interfaces/requests.service.interface';
+import { Request } from '../../../database/models/requests.entity';
+import { IRequestService } from '../interfaces/requests.service.interface';
 
 @Injectable()
 export class RequestService implements IRequestService {

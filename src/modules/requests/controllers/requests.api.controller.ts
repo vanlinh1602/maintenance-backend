@@ -1,6 +1,6 @@
 import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { IRequest } from 'src/database/types/request';
 
-import { IRequest } from '../interfaces/requests.service.interface';
 import { RequestService } from '../services/requests.service';
 
 @Controller()
@@ -20,7 +20,9 @@ export class RequestApiController {
   }
 
   @Post('/get')
-  async getRequestByFilter(@Body() filter: Partial<IRequest>): Promise<IRequest> {
+  async getRequestByFilter(
+    @Body() filter: Partial<IRequest>,
+  ): Promise<IRequest> {
     const request = await this.requestServices.getRequest(filter);
     return request.dataValues;
   }

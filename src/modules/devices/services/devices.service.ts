@@ -1,10 +1,8 @@
 import { Inject, Injectable } from '@nestjs/common';
+import { IDevice } from 'src/database/types/device';
 
-import { Device } from '../database/devices.entity';
-import {
-  IDevice,
-  IDeviceService,
-} from '../interfaces/devices.service.interface';
+import { Device } from '../../../database/models/devices.entity';
+import { IDeviceService } from '../interfaces/devices.service.interface';
 
 @Injectable()
 export class DeviceService implements IDeviceService {

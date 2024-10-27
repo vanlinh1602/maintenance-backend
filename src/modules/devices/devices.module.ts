@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 
-import { Device } from './database/devices.entity';
+import { Device } from '../../database/models/devices.entity';
 import { DeviceService } from './services/devices.service';
 
 @Module({
