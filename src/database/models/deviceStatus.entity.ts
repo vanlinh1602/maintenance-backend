@@ -7,5 +7,5 @@ import { IDeviceStatus, IDeviceStatusCreate } from '../types/device';
 })
 export class DeviceStatus extends Model<IDeviceStatus, IDeviceStatusCreate> {
   @Column
-  name: string;
+  status: string;
 }

@@ -34,5 +34,5 @@ export class Device extends Model<IDevice, IDeviceCreate> {
   employeeId: string;
 
   @Column
-  categoryId: string;
+  type: string;
 }

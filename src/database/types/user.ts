@@ -10,6 +10,7 @@ export interface IUser {
   address: string;
   citizenId: string;
   roleId: string;
+  avatar: string;
 }
 
 export type IUserCreate = Optional<IUser, 'id'>;

@@ -11,17 +11,17 @@ export interface IDevice {
   status: string;
   roomId?: string;
   employeeId?: string;
-  categoryId: string;
+  type: string;
 }
 
 export interface IDeviceStatus {
   id: string;
-  name: string;
+  status: string;
 }
 
 export interface IDeviceType {
   id: string;
-  name: string;
+  type: string;
 }
 
 export type IDeviceCreate = Optional<IDevice, 'id'>;

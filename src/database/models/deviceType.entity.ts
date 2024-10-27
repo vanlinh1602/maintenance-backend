@@ -7,5 +7,5 @@ import { IDeviceType, IDeviceTypeCreate } from '../types/device';
 })
 export class DeviceType extends Model<IDeviceType, IDeviceTypeCreate> {
   @Column
-  name: string;
+  type: string;
 }
