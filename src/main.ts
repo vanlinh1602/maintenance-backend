@@ -12,7 +12,7 @@ import { AppModule } from './app.module';
 const MySQLStore = require('express-mysql-session')(session);
 
 async function bootstrap() {
-  global.ProductID = 'english-center';
+  global.ProductID = 'maintenance-backend';
 
   const app: NestApplication = await NestFactory.create(AppModule);
 
@@ -28,7 +28,10 @@ async function bootstrap() {
   app.use(helmet());
   app.use(
     cors({
-      origin: env === 'development' ? [/localhost/, /127.0.0.1/] : [],
+      origin:
+        env === 'development'
+          ? [/localhost/, /127.0.0.1/]
+          : [/\.kuma\.id\.vn$/],
       credentials: true,
     }),
   );
