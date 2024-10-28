@@ -15,6 +15,7 @@ export interface IRequest {
   creator: string;
   assignedTo: string;
   deviceId: string;
+  priority: string;
 }
 
 export type IRequestCreate = Optional<IRequest, 'id'>;
