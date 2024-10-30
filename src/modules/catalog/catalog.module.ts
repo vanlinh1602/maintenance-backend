@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
-import { DeviceStatus } from 'src/database/models/deviceStatus.entity';
+import { DeviceCatalog } from 'src/database/models/device-catalog.entity';
+import { RequestCatalog } from 'src/database/models/request-catalog.entity';
 
-import { DeviceType } from '../../database/models/deviceType.entity';
 import { Role } from '../../database/models/roles.entity';
 import { Room } from '../../database/models/rooms.entity';
 import { User } from '../../database/models/users.entity';
@@ -12,12 +12,12 @@ import { CatalogService } from './services/catalog.service';
   exports: [
     CatalogService,
     {
-      provide: 'DEVICE_TYPE_REPOSITORY',
-      useValue: DeviceType,
+      provide: 'DEVICE_CATALOG_REPOSITORY',
+      useValue: DeviceCatalog,
     },
     {
-      provide: 'DEVICE_STATUS_REPOSITORY',
-      useValue: DeviceStatus,
+      provide: 'REQUEST_CATALOG_REPOSITORY',
+      useValue: RequestCatalog,
     },
     {
       provide: 'USER_REPOSITORY',
@@ -35,12 +35,12 @@ import { CatalogService } from './services/catalog.service';
   providers: [
     CatalogService,
     {
-      provide: 'DEVICE_TYPE_REPOSITORY',
-      useValue: DeviceType,
+      provide: 'DEVICE_CATALOG_REPOSITORY',
+      useValue: DeviceCatalog,
     },
     {
-      provide: 'DEVICE_STATUS_REPOSITORY',
-      useValue: DeviceStatus,
+      provide: 'REQUEST_CATALOG_REPOSITORY',
+      useValue: RequestCatalog,
     },
     {
       provide: 'USER_REPOSITORY',

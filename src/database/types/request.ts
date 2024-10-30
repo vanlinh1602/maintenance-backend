@@ -10,12 +10,23 @@ export interface IRequest {
     timestamp: number;
   }[];
   status: string;
-  createdDate: number;
+  shecduledDate: number;
   completedDate: number;
   creator: string;
   assignedTo: string;
   deviceId: string;
   priority: string;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+export interface IRequestCatalog {
+  id: string;
+  name: string;
+  type: 'type' | 'status';
+  createdAt: Date;
+  updatedAt: Date;
 }
 
 export type IRequestCreate = Optional<IRequest, 'id'>;
+export type IRequestCatalogCreate = Optional<IRequestCatalog, 'id'>;

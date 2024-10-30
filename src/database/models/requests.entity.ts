@@ -32,6 +32,9 @@ export class Request extends Model<IRequest, IRequestCreate> {
   createdAt: Date;
 
   @Column(DataType.DOUBLE)
+  scheduledDate: number;
+
+  @Column(DataType.DOUBLE)
   completedDate: number;
 
   @Column

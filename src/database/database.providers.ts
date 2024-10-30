@@ -1,12 +1,12 @@
 import { Sequelize } from 'sequelize-typescript';
 import { Device } from 'src/database/models/devices.entity';
-import { DeviceType } from 'src/database/models/deviceType.entity';
 import { Request } from 'src/database/models/requests.entity';
 import { Role } from 'src/database/models/roles.entity';
 import { Room } from 'src/database/models/rooms.entity';
 import { User } from 'src/database/models/users.entity';
 
-import { DeviceStatus } from './models/deviceStatus.entity';
+import { DeviceCatalog } from './models/device-catalog.entity';
+import { RequestCatalog } from './models/request-catalog.entity';
 
 export const databaseProviders = [
   {
@@ -22,9 +22,9 @@ export const databaseProviders = [
       });
       sequelize.addModels([
         Device,
-        DeviceType,
-        DeviceStatus,
+        DeviceCatalog,
         Request,
+        RequestCatalog,
         Role,
         Room,
         User,

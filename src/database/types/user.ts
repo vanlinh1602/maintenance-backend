@@ -11,6 +11,8 @@ export interface IUser {
   citizenId: string;
   roleId: string;
   avatar: string;
+  createdAt: Date;
+  updatedAt: Date;
 }
 
 export type IUserCreate = Optional<IUser, 'id'>;

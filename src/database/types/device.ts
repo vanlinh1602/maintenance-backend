@@ -12,18 +12,17 @@ export interface IDevice {
   roomId?: string;
   employeeId?: string;
   type: string;
+  createdAt: Date;
+  updatedAt: Date;
 }
 
-export interface IDeviceStatus {
+export interface IDeviceCatalog {
   id: string;
-  status: string;
-}
-
-export interface IDeviceType {
-  id: string;
-  type: string;
+  name: string;
+  type: 'type' | 'status';
+  createdAt: Date;
+  updatedAt: Date;
 }
 
 export type IDeviceCreate = Optional<IDevice, 'id'>;
-export type IDeviceStatusCreate = Optional<IDeviceStatus, 'id'>;
-export type IDeviceTypeCreate = Optional<IDeviceType, 'id'>;
+export type IDeviceCatalogCreate = Optional<IDeviceCatalog, 'id'>;
