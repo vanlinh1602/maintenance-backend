@@ -11,6 +11,10 @@ export class RequestCatalog extends Model<
 > {
   @Column
   name: string;
+
   @Column
   type: 'type' | 'status';
+
+  @Column
+  color: string;
 }

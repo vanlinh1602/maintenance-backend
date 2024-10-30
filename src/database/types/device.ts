@@ -20,6 +20,7 @@ export interface IDeviceCatalog {
   id: string;
   name: string;
   type: 'type' | 'status';
+  color?: string;
   createdAt: Date;
   updatedAt: Date;
 }

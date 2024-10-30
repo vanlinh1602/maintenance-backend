@@ -8,6 +8,10 @@ import { IDeviceCatalog, IDeviceCatalogCreate } from '../types/device';
 export class DeviceCatalog extends Model<IDeviceCatalog, IDeviceCatalogCreate> {
   @Column
   name: string;
+
   @Column(DataType.STRING)
   type: 'type' | 'status';
+
+  @Column
+  color: string;
 }

@@ -1,10 +1,4 @@
-import {
-  Column,
-  CreatedAt,
-  DataType,
-  Model,
-  Table,
-} from 'sequelize-typescript';
+import { Column, DataType, Model, Table } from 'sequelize-typescript';
 
 import { IRequest, IRequestCreate } from '../types/request';
 
@@ -28,9 +22,6 @@ export class Request extends Model<IRequest, IRequestCreate> {
   @Column
   status: string;
 
-  @CreatedAt
-  createdAt: Date;
-
   @Column(DataType.DOUBLE)
   scheduledDate: number;
 
@@ -38,7 +29,7 @@ export class Request extends Model<IRequest, IRequestCreate> {
   completedDate: number;
 
   @Column
-  employeeId: string;
+  assignedTo: string;
 
   @Column
   creator: string;
