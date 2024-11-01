@@ -6,6 +6,7 @@ import { Room } from 'src/database/models/rooms.entity';
 import { User } from 'src/database/models/users.entity';
 
 import { DeviceCatalog } from './models/device-catalog.entity';
+import { Liquidation } from './models/liquidations.entity';
 import { RequestCatalog } from './models/request-catalog.entity';
 
 export const databaseProviders = [
@@ -25,6 +26,7 @@ export const databaseProviders = [
         DeviceCatalog,
         Request,
         RequestCatalog,
+        Liquidation,
         Role,
         Room,
         User,

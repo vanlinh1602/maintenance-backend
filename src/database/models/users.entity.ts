@@ -31,5 +31,8 @@ export class User extends Model<IUser, IUserCreate> {
   roleId: string;
 
   @Column
+  roomId: string;
+
+  @Column
   avatar: string;
 }

@@ -16,6 +16,7 @@ export interface IRequest {
   assignedTo: string;
   deviceId: string;
   priority: string;
+  replacementDeviceId: string;
   createdAt: Date;
   updatedAt: Date;
 }

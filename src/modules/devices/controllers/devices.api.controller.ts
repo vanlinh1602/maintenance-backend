@@ -1,5 +1,6 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post, Query, Session } from '@nestjs/common';
 import { IDevice } from 'src/database/types/device';
+import { checkRoles } from 'src/utils/validate';
 
 import { DeviceService } from '../services/devices.service';
 
@@ -7,28 +8,33 @@ import { DeviceService } from '../services/devices.service';
 export class DeviceApiController {
   constructor(private readonly deviceServices: DeviceService) {}
 
-  @Get('/get/all')
-  async getDevices(): Promise<IDevice[]> {
-    const devices = await this.deviceServices.getDevices();
-    return devices.map((device) => device.dataValues);
-  }
-
-  @Get('/get/:id')
-  async getDevice(@Param('id') id: string): Promise<IDevice> {
-    const device = await this.deviceServices.getDevice({ id });
-    return device.dataValues;
-  }
-
-  @Post('/get')
-  async getDeviceByFilter(@Body() filter: Partial<IDevice>): Promise<IDevice> {
-    const device = await this.deviceServices.getDevice(filter);
-    return device.dataValues;
+  @Get('/get')
+  async getDeviceByFilter(
+    @Query() filter: Partial<IDevice>,
+    @Session() session,
+  ): Promise<IDevice[]> {
+    const allowAll = checkRoles(session, ['manager', 'maintenance']);
+    if (!Object.keys(filter).length && allowAll) {
+      const devices = await this.deviceServices.getDevices();
+      return devices.map((device) => device.dataValues);
+    } else {
+      const device = await this.deviceServices.getFilterDevice({
+        ...filter,
+        ...(!allowAll ? { employeeId: session.user.info.id } : {}),
+      });
+      return device.map((device) => device.dataValues);
+    }
   }
 
   @Post('/create')
   async createDevice(
     @Body() data: { device: Partial<IDevice> },
+    @Session() session,
   ): Promise<IDevice> {
+    const allowCreate = checkRoles(session, ['maintenance']);
+    if (!allowCreate) {
+      throw new Error('Permission denied to create device');
+    }
     const newDevice = await this.deviceServices.createDevice(data.device);
     return newDevice.dataValues;
   }

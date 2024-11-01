@@ -3,6 +3,7 @@ import { RouterModule as NestJsRouterModule } from '@nestjs/core';
 
 import { RouterCatalogModule } from './routes/routers.catalog.module';
 import { RouterDeviceModule } from './routes/routers.devices.module';
+import { RouterLiquidationModule } from './routes/routers.liquidations.module';
 import { RouterRequestModule } from './routes/routers.requests.module';
 import { RouterUserModule } from './routes/routers.user.module';
 
@@ -21,6 +22,7 @@ export class RouterModule {
       RouterDeviceModule,
       RouterRequestModule,
       RouterCatalogModule,
+      RouterLiquidationModule,
       RouterUserModule,
     );
     const routes = [
@@ -31,6 +33,10 @@ export class RouterModule {
       {
         path: '/requests',
         module: RouterRequestModule,
+      },
+      {
+        path: '/liquidation',
+        module: RouterLiquidationModule,
       },
       {
         path: '/catalog',

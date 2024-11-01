@@ -11,8 +11,8 @@ export class DeviceService implements IDeviceService {
     private deviceRepository: typeof Device,
   ) {}
 
-  async getDevice(filter: Partial<IDevice>): Promise<Device> {
-    return this.deviceRepository.findOne({
+  async getFilterDevice(filter: Partial<IDevice>): Promise<Device[]> {
+    return this.deviceRepository.findAll({
       where: filter,
     });
   }

@@ -10,6 +10,7 @@ export interface IUser {
   address: string;
   citizenId: string;
   roleId: string;
+  roomId: string;
   avatar: string;
   createdAt: Date;
   updatedAt: Date;

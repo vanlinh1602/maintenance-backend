@@ -11,8 +11,16 @@ export class RequestService implements IRequestService {
     private requestRepository: typeof Request,
   ) {}
 
-  async getRequest(filter: Partial<IRequest>): Promise<Request> {
+  async getRequest(id: string): Promise<Request> {
     return this.requestRepository.findOne({
+      where: {
+        id,
+      },
+    });
+  }
+
+  async getRequestByFilter(filter: Partial<IRequest>): Promise<Request[]> {
+    return this.requestRepository.findAll({
       where: filter,
     });
   }

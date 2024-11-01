@@ -39,4 +39,7 @@ export class Request extends Model<IRequest, IRequestCreate> {
 
   @Column
   priority: string;
+
+  @Column
+  replacementDeviceId: string;
 }

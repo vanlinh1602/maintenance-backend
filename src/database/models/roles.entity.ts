@@ -14,4 +14,7 @@ export class Role extends Model<IRole, IRoleCreate> {
 
   @Column(DataType.BOOLEAN)
   isManager: boolean;
+
+  @Column(DataType.BOOLEAN)
+  isMaintenance: boolean;
 }

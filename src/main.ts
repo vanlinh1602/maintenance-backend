@@ -49,17 +49,10 @@ async function bootstrap() {
 
   app.use(
     session({
-      name: ProductID,
+      name: 'maintenance',
       resave: false,
-      saveUninitialized: true,
+      saveUninitialized: false,
       proxy: true,
-      cookie:
-        process.env.NODE_ENV === 'development'
-          ? { secure: false }
-          : {
-              secure: true,
-              sameSite: 'none',
-            },
       secret: process.env.SESSION_SECRET || 'dev',
       store: sessionStore,
     }),

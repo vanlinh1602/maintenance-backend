@@ -15,16 +15,16 @@ export class RequestApiController {
 
   @Get('/get/:id')
   async getRequest(@Param('id') id: string): Promise<IRequest> {
-    const request = await this.requestServices.getRequest({ id });
+    const request = await this.requestServices.getRequest(id);
     return request.dataValues;
   }
 
   @Post('/get')
   async getRequestByFilter(
     @Body() filter: Partial<IRequest>,
-  ): Promise<IRequest> {
-    const request = await this.requestServices.getRequest(filter);
-    return request.dataValues;
+  ): Promise<IRequest[]> {
+    const request = await this.requestServices.getRequestByFilter(filter);
+    return request.map((req) => req.dataValues);
   }
 
   @Post('/create')
