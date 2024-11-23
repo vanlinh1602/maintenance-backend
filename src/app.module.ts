@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
+import { ServeStaticModule } from '@nestjs/serve-static';
 
 import configs from './configs';
 import { DatabaseModule } from './database/database.module';
@@ -16,6 +17,9 @@ import { RouterModule } from './router/router.module';
     }),
     DatabaseModule,
     RouterModule.forRoot(),
+    ServeStaticModule.forRoot({
+      rootPath: `${process.cwd()}/public`,
+    }),
   ],
   controllers: [],
   providers: [],
