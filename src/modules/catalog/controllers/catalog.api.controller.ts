@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Put } from '@nestjs/common';
 
 import { CatalogService } from '../services/catalog.service';
 
@@ -6,12 +6,12 @@ import { CatalogService } from '../services/catalog.service';
 export class CatalogApiController {
   constructor(private readonly catalogServices: CatalogService) {}
 
-  @Get('/get')
+  @Get('/')
   async getCatalog() {
     return await this.catalogServices.getCatalog();
   }
 
-  @Post('/update')
+  @Put('/')
   async updateCatalog(
     @Body() params: { action: string; type: string; data: any },
   ) {

@@ -12,6 +12,7 @@ export interface IDevice {
   roomId?: string;
   employeeId?: string;
   type: string;
+  image?: string;
   createdAt: Date;
   updatedAt: Date;
 }

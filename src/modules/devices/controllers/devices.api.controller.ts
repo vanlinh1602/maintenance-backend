@@ -1,4 +1,13 @@
-import { Body, Controller, Get, Post, Query, Session } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Post,
+  Put,
+  Query,
+  Session,
+} from '@nestjs/common';
 import { IDevice } from 'src/database/types/device';
 import { checkRoles } from 'src/utils/validate';
 
@@ -8,7 +17,7 @@ import { DeviceService } from '../services/devices.service';
 export class DeviceApiController {
   constructor(private readonly deviceServices: DeviceService) {}
 
-  @Get('/get')
+  @Get('/')
   async getDeviceByFilter(
     @Query() filter: Partial<IDevice>,
     @Session() session,
@@ -26,7 +35,7 @@ export class DeviceApiController {
     }
   }
 
-  @Post('/create')
+  @Post('/')
   async createDevice(
     @Body() data: { device: Partial<IDevice> },
     @Session() session,
@@ -39,7 +48,7 @@ export class DeviceApiController {
     return newDevice.dataValues;
   }
 
-  @Post('/update')
+  @Put('/')
   async updateDevice(
     @Body() data: { id: string; device: IDevice },
   ): Promise<{ success: boolean }> {
@@ -50,9 +59,9 @@ export class DeviceApiController {
     return { success };
   }
 
-  @Post('/delete')
+  @Delete('/')
   async deleteDevice(
-    @Body() data: { id: string },
+    @Query() data: { id: string },
   ): Promise<{ success: boolean }> {
     const success = await this.deviceServices.deleteDevice(data.id);
     return { success };

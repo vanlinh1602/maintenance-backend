@@ -1,4 +1,13 @@
-import { Body, Controller, Get, Post, Query, Session } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Post,
+  Put,
+  Query,
+  Session,
+} from '@nestjs/common';
 import { IRequest } from 'src/database/types/request';
 import { checkRoles } from 'src/utils/validate';
 
@@ -8,7 +17,7 @@ import { RequestService } from '../services/requests.service';
 export class RequestApiController {
   constructor(private readonly requestServices: RequestService) {}
 
-  @Get('/get')
+  @Get('/')
   async getRequestByFilter(
     @Query() filter: Partial<IRequest>,
     @Session() session,
@@ -26,7 +35,7 @@ export class RequestApiController {
     return request.map((req) => req.dataValues);
   }
 
-  @Post('/create')
+  @Post('/')
   async createRequest(
     @Body() data: { request: Partial<IRequest> },
   ): Promise<IRequest> {
@@ -34,7 +43,7 @@ export class RequestApiController {
     return newRequest.dataValues;
   }
 
-  @Post('/update')
+  @Put('/')
   async updateRequest(
     @Body() data: { id: string; request: IRequest },
   ): Promise<{ success: boolean }> {
@@ -45,9 +54,9 @@ export class RequestApiController {
     return { success };
   }
 
-  @Post('/delete')
+  @Delete('/')
   async deleteRequest(
-    @Body() data: { id: string },
+    @Query() data: { id: string },
   ): Promise<{ success: boolean }> {
     const success = await this.requestServices.deleteRequest(data.id);
     return { success };

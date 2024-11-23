@@ -17,6 +17,7 @@ export interface IRequest {
   deviceId: string;
   priority: string;
   replacementDeviceId: string;
+  image?: string;
   createdAt: Date;
   updatedAt: Date;
 }
